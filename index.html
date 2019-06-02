@@ -1,0 +1,91 @@
+<html>
+    <script>
+        var playerScore = 0;
+        var computerScore = 0;
+
+        //generates Rock, Paper, or Scissors for computer.
+        function computerPlay() {
+            var e = Math.random();
+            var compPlay = '';
+
+            if(e < .33) {
+                compPlay = 'Rock';
+            } else if (e > .33 && e < .67) {
+                compPlay = 'Paper';
+            } else {
+                compPlay = 'Scissors';
+            }
+            return compPlay;
+        };
+        //Receives player's selection, default rock of course :D
+        function playerPlay() {
+            var playerSelect = prompt('What do you select? ', 'Rock');
+
+            if (playerSelect.toUpperCase() === 'ROCK' || playerSelect.toUpperCase() === 'PAPER' || playerSelect.toUpperCase() === 'SCISSORS') {
+                return playerSelect;
+            }
+            else {
+                alert('Please enter a valid option, cheater.');
+                playerPlay();
+            }
+        };
+
+        //Outputs computer and player's selection while also determining who wins the game. 
+        function playRound() {
+
+            var computerSelection = computerPlay();
+            var playerSelection = playerPlay();
+
+            document.write('<br>The computer has selected: ' + computerSelection + '<br>The player has selected: ' + playerSelection);
+
+            //determines who wins
+            if(computerSelection.toUpperCase() === playerSelection.toUpperCase()) {
+                return document.write('<br>This round is a tie.<br>');
+            } else {
+                if(computerSelection.toUpperCase() === 'ROCK' && playerSelection.toUpperCase() === 'PAPER') {
+                    playerScore++;
+                    return document.write('<br>Player wins the round!<br>');
+                } else if(computerSelection.toUpperCase() === 'ROCK' && playerSelection.toUpperCase() === 'SCISSORS') {
+                    computerScore++;
+                    return document.write('<br>Computer wins the round...<br>');
+                } else if(computerSelection.toUpperCase() === 'SCISSORS' && playerSelection.toUpperCase() === 'ROCK') {
+                    playerScore++;
+                    return document.write('<br>Player wins the round!<br>');
+                } else if(computerSelection.toUpperCase() === 'SCISSORS' && playerSelection.toUpperCase() === 'PAPER') {
+                    computerScore++;
+                    return document.write('<br>Computer wins the round...<br>');
+                } else if(computerSelection.toUpperCase() === 'PAPER' && playerSelection.toUpperCase() === 'SCISSORS') {
+                    playerScore++;
+                    return document.write('<br>Player wins the round!<br>');
+                } else if(computerSelection.toUpperCase() === 'PAPER' && playerSelection.toUpperCase() === 'ROCK') {
+                    computerScore++;
+                    return document.write('<br>Computer wins the round...<br>');
+                } else {
+                    return document.write('A calculating error has occurred...<br>');
+                }
+            }
+        };
+
+        function game() {
+
+            for (i = 0; i < 5; i++) {
+                playRound();
+            }
+            document.write('<br><strong>The result of the game is...</strong><br>Computer: ' + computerScore + '<br>Player: ' + playerScore);
+
+            if(playerScore > computerScore) {
+                document.write('<br>You win!');
+            } else if(playerScore === computerScore) {
+                document.write('<br>It is a tie');
+            } else {
+                document.write('<br>Sorry, you lose...');
+            }
+        }
+
+        //Runs the game
+        document.write('<strong>Welcome to Rock, Paper, Scissors!</strong> <br/> See if you can beat the computer.<br/>');
+        game();
+        
+
+    </script>
+</html>
