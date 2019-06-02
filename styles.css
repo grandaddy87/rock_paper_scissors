@@ -1,0 +1,22 @@
+button {
+    width: 200px;
+    height: 120px;
+    margin: 20px;
+    font-size: 200%;
+    background-color: #2d2b2b;
+    border-radius: 10px;
+}
+#rock {
+    color: #a59690
+}
+#paper {
+    color: #ffffff;
+}
+#scissors {
+    color: #ed1c3f;
+}
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    align-content: center;
+}
